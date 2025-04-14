@@ -1,1 +1,0 @@
-http://abrbet01apcp30v.fiatauto.adfa.local/ePoint/Transits/Transits
