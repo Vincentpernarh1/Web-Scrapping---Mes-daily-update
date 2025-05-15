@@ -36,7 +36,7 @@ chrome_path = "C:/Program Files/Google/Chrome/Application/chrome.exe"
 
 # Configurar opções do Chrome
 chrome_options = Options()
-# chrome_options.binary_location = chrome_path  # Define o Chrome personalizado
+chrome_options.binary_location = chrome_path  # Define o Chrome personalizado
 # chrome_options.add_argument("--headless")  # Modo headless para não exibir a janela do navegador
 # chrome_options.add_argument("--disable-gpu")  # Melhora a compatibilidade em alguns sistemas
 # chrome_options.add_argument("--window-size=1920x1080")  # Define um tamanho de tela adequado
@@ -156,8 +156,8 @@ def Calendar():
     #start_date = datetime(todayy.year, 1, 4)  // this is to extract the data from the first day of the year
     #end_datee = datetime(todayy.year, 1, 5)
     
-    start_date = datetime(todayy.year, todayy.month,todayy.day-1)
-    end_datee = datetime(todayy.year,todayy.month,todayy.day)
+    start_date = datetime(todayy.year, todayy.month,todayy.day-7)
+    end_datee = datetime(todayy.year,todayy.month,todayy.day-6)
     
     
     # Loop through each day from the start date to today
