@@ -1,2 +1,2 @@
-client_id = "FIATAUTO\SF71379"
-client_secret = "VinPer20232425"
+client_id = ""
+client_secret = ""
