@@ -156,8 +156,8 @@ def Calendar():
     #start_date = datetime(todayy.year, 1, 4)  // this is to extract the data from the first day of the year
     #end_datee = datetime(todayy.year, 1, 5)
     
-    start_date = datetime(todayy.year, todayy.month,todayy.day-7)
-    end_datee = datetime(todayy.year,todayy.month,todayy.day-6)
+    start_date = datetime(todayy.year, todayy.month,todayy.day-6)
+    end_datee = datetime(todayy.year,todayy.month,todayy.day-5)
     
     
     # Loop through each day from the start date to today
