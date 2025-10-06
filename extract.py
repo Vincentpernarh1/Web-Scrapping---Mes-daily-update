@@ -38,14 +38,15 @@ chrome_path = "C:/Program Files/Google/Chrome/Application/chrome.exe"
 chrome_options = Options()
 chrome_options.binary_location = chrome_path  # Define o Chrome personalizado
 # chrome_options.add_argument("--headless")  # Modo headless para não exibir a janela do navegador
-# chrome_options.add_argument("--disable-gpu")  # Melhora a compatibilidade em alguns sistemas
-# chrome_options.add_argument("--window-size=1920x1080")  # Define um tamanho de tela adequado
+chrome_options.add_argument("--disable-gpu")  # Melhora a compatibilidade em alguns sistemas
+chrome_options.add_argument("--window-size=1920x1080")  # Define um tamanho de tela adequado
+chrome_options.add_argument("--log-level=3")  # suppress warnings
 
 
 date = 0
 
 # Caminho correto do ChromeDriver
-chromedriver_path = "C:/Users/perna/OneDrive/Área de Trabalho/Old Laptop Data/Automation/chromedriver-win64/chromedriver-win64/chromedriver.exe"
+chromedriver_path = "../Driver/chromedriver.exe"
 
 
 # Inicializa o serviço do ChromeDriver
@@ -59,7 +60,7 @@ driver.get("http://abrbet01apcp30v.fiatauto.adfa.local/ePoint/Transits/Transits"
 
 print("Título da página:", driver.title)
 
-time.sleep(30)
+time.sleep(12)
 
 def Other_navs() :
     print("found here")
@@ -100,13 +101,13 @@ def secao_de_para() :
     )
 
     # Locate the item with offset 31
-    item_31 = driver.find_element(By.XPATH, '//li[@data-offset-index="31"]')
+    item_32 = driver.find_element(By.XPATH, '//li[@data-offset-index="32"]')
 
     # Ensure the element is visible before clicking
-    driver.execute_script("arguments[0].scrollIntoView();", item_31)
+    driver.execute_script("arguments[0].scrollIntoView();", item_32)
     
     # Click the item
-    driver.execute_script("arguments[0].click();", item_31)
+    driver.execute_script("arguments[0].click();", item_32)
     
     print("Moderie clicked successfully!")
 
@@ -118,7 +119,7 @@ def secao_de_para() :
     )
 
     # Locate the item with offset 31
-    item_D = driver.find_element(By.XPATH, '//ul[@id="ddlStretchFrom_listbox"]//li[@data-offset-index="15"]')
+    item_D = driver.find_element(By.XPATH, '//ul[@id="ddlStretchFrom_listbox"]//li[@data-offset-index="12"]')
 
     # Ensure the element is visible before clicking
     driver.execute_script("arguments[0].scrollIntoView();", item_D)
@@ -133,7 +134,7 @@ def secao_de_para() :
     WebDriverWait(driver, 10).until(
         EC.presence_of_all_elements_located((By.CLASS_NAME, "k-item"))
     )
-    item_D2 = driver.find_element(By.XPATH, '//ul[@id="ddlStretchTo_listbox"]//li[@data-offset-index="15"]')
+    item_D2 = driver.find_element(By.XPATH, '//ul[@id="ddlStretchTo_listbox"]//li[@data-offset-index="12"]')
 
     # Ensure the element is visible before clicking
     driver.execute_script("arguments[0].scrollIntoView();", item_D2)
@@ -153,11 +154,11 @@ def Calendar():
     todayy = datetime.today()
 
     # Set the start date (January 1st of the current year)
-    #start_date = datetime(todayy.year, 1, 4)  // this is to extract the data from the first day of the year
-    #end_datee = datetime(todayy.year, 1, 5)
+    start_date = datetime(todayy.year, 2, 4)  #// this is to extract the data from the first day of the year
+    end_datee = datetime(todayy.year, 2, 5)
     
-    start_date = datetime(todayy.year, todayy.month,todayy.day-6)
-    end_datee = datetime(todayy.year,todayy.month,todayy.day-5)
+    # start_date = datetime(todayy.year, todayy.month,todayy.day-6)
+    # end_datee = datetime(todayy.year,todayy.month,todayy.day-5)
     
     
     # Loop through each day from the start date to today
@@ -212,7 +213,7 @@ def Calendar():
         date_input.clear()
 
         # Enter the new date for "To"
-        date_input.send_keys(f"{end_date_str} 02:00")
+        date_input.send_keys(f"{end_date_str} 06:00")
 
         # Press ENTER to confirm the date
         date_input.send_keys(Keys.RETURN)
@@ -258,7 +259,7 @@ def Process_date(date) :
 
 
 def data_to_file(data):
-    file_path = "C:/Users/perna/OneDrive/Área de Trabalho/Old Laptop Data/Automation/Extração diario de fusão/Diario de fusão.xlsx"
+    file_path = "Diario de fusão.xlsx"
 
     if data:  # Ensure there's data to process
         new_df = pd.DataFrame(data, columns=["Date", "Model", "Value"])
